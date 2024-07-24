@@ -33,8 +33,6 @@ export function QueryPagination({
     return `${pathname}?${params.toString()}`;
   };
 
-  console.log(totalPages);
-
   return (
     <Pagination className={className}>
       <PaginationContent>
