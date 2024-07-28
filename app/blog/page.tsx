@@ -2,6 +2,13 @@ import { posts } from "#site/content";
 import { PostItem } from "@/components/post-item";
 import { QueryPagination } from "@/components/query-pagination";
 import { sortPosts } from "@/lib/utils";
+import { Metadata } from "next";
+
+//SEO
+export const metadata: Metadata = {
+  title: "My Blog",
+  description: "This is a description",
+};
 
 const POSTS_PER_PAGE = 5;
 
