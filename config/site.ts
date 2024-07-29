@@ -4,7 +4,7 @@ export const siteConfig = {
   description: "Nextjs 14 blog using velite, tailwind and shadcn",
   author: "Jann Idar Hillestad",
   links: {
-    twitter: "",
+    twitter: "https://x.com/JIHillestad",
     github: "https://github.com/Jihillestad",
     personalSite: "",
   },
