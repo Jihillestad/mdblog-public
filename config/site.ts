@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "JollyBlog",
+  name: "jihBlog",
   url: "https://mdblog-phi.vercel.app",
   description: "Nextjs 14 blog using velite, tailwind and shadcn",
   author: "Jann Idar Hillestad",

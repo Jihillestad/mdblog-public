@@ -16,8 +16,8 @@ export default function Home() {
             Hello, I&apos;m Jann Idar
           </h1>
           <p className="max-w-[42rem] mx-auto text-muted-foreground sm:text-xl text-balance">
-            Welcome to my blog template. Built using shadcn, velite and NextJS
-            14
+            Welcome to my tech blog. I&apos;ll share what I learn in Ops,
+            DevOps, Dev as well as geek hobbies.
           </p>
           <div className="flex flex-col gap-4 justify-center sm:flex-row">
             <Link
