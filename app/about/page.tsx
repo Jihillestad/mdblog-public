@@ -33,17 +33,10 @@ export default async function AboutPage() {
           </p>
         </div>
         <p className="text-muted-foreground text-lg py-4">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum
-          consequatur laudantium eaque fugiat, unde debitis, assumenda corporis
-          animi beatae non neque quibusdam porro tenetur, laboriosam in ducimus
-          ut amet voluptate commodi praesentium ex. Error iusto sed in hic quod,
-          quasi numquam libero dicta modi adipisci, obcaecati aut beatae
-          asperiores non excepturi facere magni suscipit facilis aliquid?
-          Dolorum, fuga facere sapiente autem dolor blanditiis nam, placeat,
-          provident ratione sequi commodi corporis! Saepe eos consequatur nulla
-          minima earum sunt pariatur perspiciatis iusto tempore est dolor quam
-          maiores alias cum aspernatur impedit at obcaecati esse ad quas error
-          ducimus, minus dicta totam? Aut?
+          I am Jann Idar Hillestad, a senior IT Consultant from Norway. With
+          more than 19 years of experience in ops and consultancies, it is time
+          to move out of my comfort zone in this blog. I will share what I learn
+          in Dev, DevOps, Automation, MacOS, Robotics and other cool stuff.
         </p>
       </div>
     </div>
