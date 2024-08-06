@@ -6,6 +6,7 @@ export const siteConfig = {
   links: {
     twitter: "https://x.com/JIHillestad",
     github: "https://github.com/Jihillestad",
+    linkedin: "https://www.linkedin.com/in/jihillestad/",
     personalSite: "",
   },
 };
