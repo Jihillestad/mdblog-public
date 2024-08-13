@@ -1,0 +1,190 @@
+---
+title: micro:bit Python Basics
+description: Let's get started programming the Micro:Bot using MicroPython
+date: 2024-08-11
+published: true
+tags:
+  ["coding", "microbit", "robotics", "python", "neovim", "terminal", "vscode"]
+---
+
+<Image alt="Microbit" src="/microbit001.svg" width={250} height={250} />
+
+# Introduction
+
+This is some simple examples programming your micro:bit using **micro:bit Python**. We will
+keep it at a beginner level this time. The goal is for you to connect to your **micro:bit**
+and get started.
+
+# Let's get started
+
+First of all, it is time to connect your **micro:bit** to your computer. Use the provide
+USB to microUSB cable to connect your **micro:bit** to your computer. The factory example
+will start playing, and you can interact with it if you like to. When you are ready to
+start programming it with your own stuff, follow this guide.
+
+## Set up the Project Environment
+
+Let's set up the Project Environment so you can start writing code and flash it to your
+**micro:bit**. If you are doing this together with your kids, I recommend using the web-based
+[micro:bit Python](https://python.microbit.org/v/3) editor. If you have some Dev experience,
+follow along with the VsCode chapter. There are some really cool extensions which get the job done.
+For true ninjas, do the first steps to initialize the Project Environment in VsCode. Then move on to
+the **Neovim** chapter.
+
+### Web-based micro:bit Python editor
+
+1. Open the [micro:bit Python](https://python.microbit.org/v/3) website.
+2. Make sure your **micro:bit** is connected with the provided cable.
+3. When you open the web editor, there is an example code for writing "Hello" and displaying a heart
+   on the LEDs of your **micro:bit**.
+4. Click "Save". Select or create a folder on your computer to contain the Project Environment.
+5. Let&apos;s connect the Project Environment to the **micro:bit**:
+
+   1. In the bottom left corner, click on the **3 vertical dots**.
+      <Image
+        alt="Microbit"
+        src="/Sendtomicrobit001.png"
+        width={250}
+        height={250}
+      />
+   2. Click **Next**.
+
+      <Image
+        alt="Microbit"
+        src="/Sendtomicrobit002.png"
+        width={400}
+        height={400}
+      />
+
+   3. Click **Next**.
+
+      <Image
+        alt="Microbit"
+        src="/Sendtomicrobit003.png"
+        width={400}
+        height={400}
+      />
+
+   4. Mark the detected **micro:bit** and click **Connect**
+
+      <Image
+        alt="Microbit"
+        src="/Sendtomicrobit004.png"
+        width={400}
+        height={400}
+      />
+
+   5. If the connection is successful, you should see the following line under your code:
+
+      <Image
+        alt="Microbit"
+        src="/Sendtomicrobit006.png"
+        width={250}
+        height={250}
+      />
+
+After following these steps, you are ready to start coding your **micro:bit** using **micro:bit Python Web Editor**.
+You can test using the **virtual micro:bit** on the website or try to send the code to your micro:bit later in
+this post.
+
+### Using VsCode
+
+If you have some Dev experience and want to set up your Project Environment like you do on your job, you can
+use a proper IDE like VsCode with some extensions enabling Intellisense and sending your code to your micro:bit.
+
+#### Extensions.
+
+First of all, you need an extension for **micro:bit Python**:
+
+1. Open **VsCode**.
+2. Go to **Extensions** and search for **micro:bit Python by MAKInterakt**. Select **Install**.
+3. Restart VsCode
+
+#### Initialize
+
+1. In **VsCode**, Select "Open". Create a new folder for your Project Environment, f.ex "HelloWorld"
+2. Once inside the folder, press "Shift-Cmd-p" to open the **Command Menu**. Search for
+   **micro:bit-python: Flash MicroPython environment on micro:bit** and press **Enter**. This will install
+   the necessary firmware to run **micro:bit Python** on your **micro:bit**.
+3. Run **micro:bit-python: Initialize the workspace**. This will add the folder "./microbit" to your
+   Project Environment, enabling **Intellisense** code auto completion.
+
+You are now ready to write code in **VsCode**
+
+### Using NeoVim and Terminal
+
+If you truly are a Terminal lover and Keyboard Ninja, it is definitely possible to use Neovim to write
+**micro:bit Python**. This is recommended for Devs who are used to writing Python code in Neovim, and
+have the necessary LSP&apos;s, Linters and Formatters in place. You need to install the **uflash**
+module for Python, requiring a Python Virtual Environment to follow best-practices.
+
+#### Initialize the Python Virtual Environment
+
+1. Run the **Initialize** steps for **VsCode** in the chapter above. In your next project, get you only need
+   to copy the ./microbit folder from a previous Project Environment to your new one.
+2. Run the following **bash** / **zsh** lines to set up the Python Virtual Environment:
+
+sudo python3 -m venv .
+source ./bin/activate
+
+3. Run the following **bash** / **zsh** line to install **uflash**:
+
+sudo pip install uflash
+
+You can now start coding. Just create the python file using `touch main.py` and then `nvim main.py`
+
+## Writing code
+
+Let&apos;s write some code and have a bit of fun!
+
+### Display some text on the micro:bit LEDs
+
+In this example, let us make the **micro:bit** greet us.
+
+```python
+from microbit import *
+
+display.scroll("Booyakasha!")
+
+```
+
+### Deploy using the Web Editor
+
+The Web Editor is the easiest way to deploy code to your **micro:bit** when no IDE is installed. Simply
+click the **Send to micro:bit** button when done.
+
+<Image alt="Microbit" src="/Sendtomicrobit001.png" width={250} height={250} />
+
+### Deploy using VsCode
+
+You can use the **micro:bit Python by MAKInterakt** extension to deploy code to your **micro:bit**:
+
+1. Save your code, make sure to name it **main.py**.
+2. Press **shift-cmd-p** to search for command. Select **micro:bit-python: Flash sketch on the micro:bit**.
+   and press **Enter** to run.
+
+### Deploy using Neovim and Terminal
+
+The **uflash** utility can deploy **python** files to the **micro:bit** using the **Terminal** interface:
+
+1. In **neovim**, press **:w** to save the **python file**.
+2. In **Terminal**, run the command `uflash filename.py`
+
+## More code
+
+In the last example, a message is displayed on the **micro:bit** LEDs once. Now, let&apos;s make
+sure the message repeats as long as the **miro:bit** is powered using an **Infinite loop**.
+
+```python
+from microbit import *
+
+while true:
+    display.scroll("Booyakasha!")
+```
+
+## Summary
+
+This was an introduction to programming the **micro:bit** using **micro:bit python**. There are
+many ways of doing it, I have covered some of them. There are other tools as well, whatever
+floats your boat. Have fun playing around with your **micro:bit**, I hope this post can help
+you get started.

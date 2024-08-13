@@ -8,8 +8,8 @@ import { Metadata } from "next";
 
 //SEO
 export const metadata: Metadata = {
-  title: "My Blog",
-  description: "This is a description",
+  title: "jihBlog",
+  description: "This is my tech blog",
 };
 
 const POSTS_PER_PAGE = 5;
