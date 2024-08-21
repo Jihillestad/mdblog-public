@@ -4,8 +4,9 @@ import { Metadata } from "next";
 
 //SEO
 export const metadata: Metadata = {
-  title: "About Me",
-  description: "Information about me",
+  title: "Jann Idar Hillestad's tech blog",
+  description:
+    "I am Jann Idar Hillestad, a senior IT Consultant from Norway. With more than 19 years of experience in ops and consultancies, it is time to move out of my comfort zone in this blog. I will share what I learn in Dev, DevOps, Automation, MacOS, Robotics and other cool stuff.",
 };
 
 export default async function AboutPage() {
