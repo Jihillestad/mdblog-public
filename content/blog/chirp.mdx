@@ -1,0 +1,88 @@
+---
+title: micro:bit Python - Let's make it chirp!
+description: Let's make a simple digital pet and make it chirp
+date: 2024-08-29
+published: true
+tags: ["coding", "microbit", "robotics", "python"]
+---
+
+# Introduction
+
+This is an exercise where we can learn some **Python** while having a bit of fun. We will start making
+an animated "bird" and make it chirp using the **Display** and **Audio** features of the **micro:bit**.
+
+## Set up the project
+
+For this exercise, we will use [micro:bit Python Web Editor](https://python.microbit.org/v/3). Bring your kids along, code snippets can
+be dragged and dropped for quick code writing and easy understanding as we move along.
+
+1. Connect your **micro:bit** to your computer using the microUSB cable.
+2. Connect the [micro:bit Python Web Editor](https://python.microbit.org/v/3) to your **micro:bit**.
+3. Send the Default Sample Code to your **micro:bit** to make sure it works.
+   <Image alt="Microbit" src="/chirp001.png" width={800} height={800} />
+4. If everything works, your **micro:bit** should show a **heart** on the display, followed by
+   **scrolling text "Hello"**.
+5. Have you noticed the **micro:bit simulation** in the upper right corner of the Web Editor? This
+   is very useful.
+   <Image alt="Microbit" src="/chirp003.png" width={800} height={800} />
+
+## Our quiet pet
+
+Let's start making our pet bird animation.
+
+1. In the **left pane**, there are samples that can be dragged and dropped to the **code window**. Expand the
+   **Display** container.
+   <Image alt="Microbit" src="/chirp004.png" width={400} height={400} />
+2. Grab the highlighted `display.show(Image(...))` snippet. Then drag and drop it 2 times. Delete the code
+   that displays a heart and scroll message. The code should look like the picture below, needing some changes.
+   <Image alt="Microbit" src="/chirp005.png" width={400} height={400} />
+3. Let's start making our pet. We make a **matrix** determining the light strength for each **LED** on the
+   **micro:bit display** from 0 to 9.
+   <Image alt="Microbit" src="/chirp006.png" width={400} height={800} />
+4. The animation is probably way too fast! Let's slow it down a bit, shall we? Adding a pause after each picture
+   using `sleep(400)` should to the trick.
+   <Image alt="Microbit" src="/chirp007.png" width={400} height={400} />
+
+Now we have created a hungry pet bird opening and closing it's beak and blinking it's eyes. Use the simulation, or
+send the code to your **micro:bit** for testing.
+
+Our bird is still quiet. In the next part of the exercise, we'll give it some voice.
+
+## Time to chirp!!!
+
+To complete this challenge, we only need one line of code for our bird to chirp. To make it easy for beginners or
+our kids to follow along, we'll drag and drop the snippet we need.
+
+1. In the **left pane**, expand the **Sound** container.
+   <Image alt="Microbit" src="/chirp008.png" width={400} height={400} />
+2. Drag and drop `audio.play(Sound.GIGGLE)` to the bottom of the code inside the **while** loop.
+   <Image alt="Microbit" src="/chirp009.png" width={800} height={800} />
+3. The finished code should look like this:
+   <Image alt="Microbit" src="/chirp010.png" width={800} height={800} />
+4. Test using the **simulation** or sending the code to your **micro:bit**
+
+## The complete micro:bit python code
+
+```python
+# Imports go at the top
+from microbit import *
+
+
+# Code in a 'while True:' loop repeats forever
+while True:
+
+    display.show(Image('00000:'
+                       '06060:'
+                       '00000:'
+                       '09990:'
+                       '00000'))
+    sleep(400)
+
+    display.show(Image('00000:'
+                       '09090:'
+                       '00900:'
+                       '09090:'
+                       '00900'))
+
+    audio.play(Sound.GIGGLE)
+```
