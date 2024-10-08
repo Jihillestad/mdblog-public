@@ -1,0 +1,69 @@
+---
+title: My Neovim Repo
+description: This setup will help you get a Neovim setup for coding, DevOps and text editing
+date: 2024-10-08
+published: true
+tags: ["neovim", "coding"]
+---
+
+## Introduction
+
+This setup will help you get going with Neovim, with a lot of useful plugins and LSP's that
+makes coding and text editing efficient and a lot of fun. I highly recommend watching this
+Youtube content from [Josean Martinez](https://www.youtube.com/@joseanmartinez) before continuing.
+I got started using his setup, and added my own stuff on top op that.
+
+<Youtube id="6pAG3BHurdM" />
+
+## Get my setup
+
+1. First, get my public dotfiles repo:
+
+   ```bash
+   mkdir -p ~/repos/github.com/yourname/
+   cd ~/repos/github.com/yourname/
+   git clone https://github.com/Jihillestad/dotfiles-public.git
+   cd ~/repos/github.com/yourname/dotfiles-public
+   rm -rf ./.git
+   ```
+
+2. Install Neovim. I am a MacOS user, so I'll use **homebrew**:
+
+   ```bash
+   brew install neovim
+   brew install neovim-remote
+   brew install ripgrep
+   brew install fzf
+   brew install wget
+   brew install node
+   brew install treesitter
+   brew install python
+   ```
+
+3. Make your own local git repo
+
+   ```bash
+   git init
+   git add -A
+   git commit -m "initial commit"
+   ```
+
+4. Symlink the neovim config:
+
+   ```bash
+   ln -s ~/repos/github.com/yourname/dotfiles-public/nvim ~/.config/nvim
+   ```
+
+5. Start Neovim using this command:
+
+   ```bash
+   nvim
+   ```
+
+6. You might have to restart Neovim a few times for **Lazy.nvim** to finish installing everything and their
+   dependencies.
+
+## Summary
+
+This will get you started. I cannot guarantee that it works on your system. Keymaps could make some issues,
+these you have to figure out. Happy learning!

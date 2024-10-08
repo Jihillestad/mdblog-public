@@ -40,5 +40,5 @@ next-env.d.ts
 
 # docker
 .dockerignore
-compose.yaml
-dockerfile
+docker-compose.yaml
+Dockerfile
