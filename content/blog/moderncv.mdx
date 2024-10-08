@@ -97,10 +97,10 @@ CV concise.
 ### Compile your CV
 
 1. Editing **cv.tex** in **Neovim** should automatically load the **vimtex** plugin if using my setup.
-   To compile continuously, press `<localleader>ll`. In my setup, \<localleader> is set to "\\". Using my setup will
+   To compile continuously, press `\ll`. In my setup, **localleader** is set to "\\". Using my setup will
    also load the pdf reader **Skim** automatically when compiling. When saving the **cv.tex** file while running
    continuous compiling, the PDF file in **Skim** will update as well.
-2. When happy with the result, stop the compiler using the same keys as starting compiling: `<localleader>ll`
+2. When happy with the result, stop the compiler using the same keys as starting compiling: `\ll`
 
 3. Create a subfolder named ~/projects/latex/moderncv-public/pub and copy the pdf file using the following command:
 
@@ -108,7 +108,7 @@ CV concise.
    cp ~/projects/latex/moderncv-public/*.pdf ~/projects/latex/moderncv-public/pub/
    ```
 
-4. In **Neovim**, use the following keys to clean up all temporary LaTeX compiler files using: <localleader>lC`
+4. In **Neovim**, use the following keys to clean up all temporary LaTeX compiler files using: \lC`
 
 ### Write and compile your Cover Letter
 
@@ -129,14 +129,14 @@ own words in the final Cover Letter, and make sure you can back up every written
    4. City
 5. Save **cl-ACME.tex**
 6. Write your Cover Letter in **cl-ACME-content.tex** and save the file and save the file.
-7. In **cl-ACME.tex**, start compiling using `<localleader>ll`. Verify that the pdf file looks good in **Skim**.
-8. When satisfied with the Cover letter, stop the compiler using `<localleader>ll`. Copy the pdf to ./pub using:
+7. In **cl-ACME.tex**, start compiling using `\ll`. Verify that the pdf file looks good in **Skim**.
+8. When satisfied with the Cover letter, stop the compiler using `\ll`. Copy the pdf to ./pub using:
 
    ```bash
    cp ~/projects/latex/moderncv-public/*.pdf ~/projects/latex/moderncv-public/pub/
    ```
 
-9. In **Neovim: cl-ACME.tex**, use the following keys to clean up all temporary LaTeX compiler files using: `<localleader>lC`
+9. In **Neovim: cl-ACME.tex**, use the following keys to clean up all temporary LaTeX compiler files using: `\lC`
 
 10. Archive the application files using:
 
