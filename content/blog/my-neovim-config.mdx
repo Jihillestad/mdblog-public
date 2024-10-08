@@ -40,7 +40,22 @@ I got started using his setup, and added my own stuff on top op that.
    brew install python
    ```
 
-3. Make your own local git repo
+3. Install MacTeX - A LaTeX compiler for MacOS
+
+   ```bash
+   brew install mactex
+   ```
+
+4. Install and configure Skim, a pdf reader that integrates well with neovim and LaTeX compilers:
+
+   1. Download and install Skim from here: [https://sourceforge.net/projects/skim-app/files/Skim/Skim-1.7.4/Skim-1.7.4.dmg/download](https://sourceforge.net/projects/skim-app/files/Skim/Skim-1.7.4/Skim-1.7.4.dmg/download)
+   2. Go to Skim -> Settings - Sync
+   3. Under PDF-TeX Sync Support -> Preset: Custom
+   4. Under PDF-TeX Sync Support -> Command: nvim
+   5. Under PDF-TeX Sync Support -> Arguments: --headless -c "VimtexInverseSearch %line '%file'"
+      <Image alt="Skim" src="/skim001.png" width={400} height={400} />
+
+5. Make your own local git repo
 
    ```bash
    git init
@@ -48,19 +63,19 @@ I got started using his setup, and added my own stuff on top op that.
    git commit -m "initial commit"
    ```
 
-4. Symlink the neovim config:
+6. Symlink the neovim config:
 
    ```bash
    ln -s ~/repos/github.com/yourname/dotfiles-public/nvim ~/.config/nvim
    ```
 
-5. Start Neovim using this command:
+7. Start Neovim using this command:
 
    ```bash
    nvim
    ```
 
-6. You might have to restart Neovim a few times for **Lazy.nvim** to finish installing everything and their
+8. You might have to restart Neovim a few times for **Lazy.nvim** to finish installing everything and their
    dependencies.
 
 ## Summary
