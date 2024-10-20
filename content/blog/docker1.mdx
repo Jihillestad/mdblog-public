@@ -1,0 +1,126 @@
+---
+title: Get started with Docker
+description: Basic Docker stuff to get you started on your DevOps journey
+date: 2024-10-19
+published: true
+tags: ["linux", "macos", "docker", "coding", "devops"]
+---
+
+<Image alt="Docker1001" src="/docker1001.png" width={400} height={400} />
+
+# Introduction
+
+I’ve recently had the chance to explore **Docker** more, and it’s truly
+amazing! Containerizing your environments offers a lot of benefits. It’s
+essential to learn this if you’re getting started in **DevOps**.
+
+> "It works on my system!"
+
+With **Docker**, containerizing environments makes them portable. You can
+define prerequisites and their versions while configuring the containers,
+ensuring they behave the same on different computers or servers.
+
+This is basic stuff. There are hundreds of posts like this online, so feel free
+to move on to more interesting topics. However, it’s here if needed as context
+for more advanced content to come.
+
+# The Basics
+
+On **Docker Hub**, there are tons of useful container images to help you get
+started containerizing your projects. Let’s run our first container:
+
+```bash
+docker run -d nginx
+```
+
+This command pulls the nginx image from Docker Hub (if it’s not already on your
+system) and then starts a container running that image.
+
+Let’s test it:
+
+<Image alt="Docker1002" src="/docker1002.png" width={800} height={800} />
+
+## What went wrong?
+
+```bash
+docker ps
+```
+
+<Image alt="Docker1003" src="/docker1003.png" width={800} height={800} />
+
+As you can see, the container is running. Under PORTS, you’ll notice that the
+container is running on 80/tcp internally, but we forgot to expose it on a
+specific port. Let’s fix this.
+
+## Some Docker networking
+
+We'll recreate the container and then make it accessible outside the container with these
+commands:
+
+```bash
+docker stop nostalgic_torvalds
+docker run -d -p 80:80 nginx
+```
+
+<Image alt="Docker1004" src="/docker1004.png" width={800} height={800} />
+
+Now, we can access our nginx container in the browser. Let’s verify our running containers:
+
+```bash
+docker ps
+```
+
+<Image alt="Docker1005" src="/docker1005.png" width={800} height={800} />
+
+To stop all running containers, use this command:
+
+```bash
+docker stop $(docker ps -a -q)
+```
+
+# Docker files
+
+When creating your own containers, using the docker run command can become
+lengthy and difficult to manage in the shell. Often, you’ll need to create your
+own images tailored to your application’s needs.
+
+## Dockerfile
+
+The Dockerfile is used to build Docker images. Here’s an example that builds an
+Apache server running on Ubuntu:
+
+```Dockerfile
+FROM ubuntu
+
+RUN apt-get update && \
+  apt-get install -y apache2 apache2-utils && \
+  apt-get clean
+
+EXPOSE 80
+
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+```
+
+## docker-compose
+
+The docker-compose.yaml file is a YAML file for creating and running
+containers. Running `docker compose up` will start the container with the
+configured settings from docker-compose.yaml. Without any -f (file) parameters,
+the command looks for a Dockerfile in the current directory to build the image
+before running the container.
+
+```yaml
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    restart: always
+```
+
+## .dockerignore
+
+If you are copying files in your Dockerfile, creating a .dockerignore file
+allows you to ignore certain files or folders, similar to how .gitignore works.
