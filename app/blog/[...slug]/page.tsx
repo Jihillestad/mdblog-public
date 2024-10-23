@@ -5,6 +5,7 @@ import "@/styles/mdx.css";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { Tag } from "@/components/tag";
+import Comments from "@/components/comments";
 
 interface PostPageProps {
   params: {
@@ -68,21 +69,45 @@ export async function generateStaticParams(): Promise<
 export default async function PostPage({ params }: PostPageProps) {
   const post = await getPostFromParams(params);
 
+  const repo = "jihillestad/mdblog-public";
+  const repoId = process.env.NEXT_PUBLIC_COMMENTS_REPO_ID || "";
+  const category = process.env.NEXT_PUBLIC_COMMENTS_CATEGORY || "";
+  const categoryId = process.env.NEXT_PUBLIC_COMMENTS_CATEGORY_ID || "";
+
   if (!post || !post.published) {
     notFound();
   }
 
+  // if (!repo || !repoId || !category || !categoryId) {
+  //   console.error(
+  //     "Missing required environment variables for Comments component.",
+  //   );
+  //   return <p>Comments are unavailable at the moment.</p>;
+  // }
+
   return (
-    <article className="container py-6 prose dark:prose-invert max-w-3xl mx-auto">
-      <h1 className="mb 2">{post.title}</h1>
-      <div className="flex gap-2 mb-2">
-        {post.tags?.map((tag) => <Tag tag={tag} key={tag} />)}
+    <>
+      <article className="container py-6 prose dark:prose-invert max-w-3xl mx-auto">
+        <h1 className="mb 2">{post.title}</h1>
+        <div className="flex gap-2 mb-2">
+          {post.tags?.map((tag) => <Tag tag={tag} key={tag} />)}
+        </div>
+        {post.description ? (
+          <p className="text-xl mt-0 text-muted-foreground">
+            {post.description}
+          </p>
+        ) : null}
+        <hr className="my-4" />
+        <MDXContent code={post.body} />
+      </article>
+      <div className="container py-6 max-w-3xl mx-auto">
+        <Comments
+          repo={repo}
+          repoId={repoId}
+          category={category}
+          categoryId={categoryId}
+        />
       </div>
-      {post.description ? (
-        <p className="text-xl mt-0 text-muted-foreground">{post.description}</p>
-      ) : null}
-      <hr className="my-4" />
-      <MDXContent code={post.body} />
-    </article>
+    </>
   );
 }
